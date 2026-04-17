@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이예진 포트폴리오</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    /* CSS 변수 */
+    :root {
+      --color-primary: #111111;
+      --color-gray: #666666;
+      --color-light: #f5f5f5;
+      --color-bg: #f8f8f8;
+      --color-white: #ffffff;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-full: 100px;
+      --spacing-sm: 8px;
+      --spacing-md: 24px;
+      --spacing-lg: 48px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      margin: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      min-width: 360px;
+    }
+
+    /* 헤더 */
+    .header {
+      background-color: var(--color-white);
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--color-light);
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 0;
+    }
+
+    .nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--color-gray);
+      font-size: 16px;
+      transition: 0.2s;
+    }
+
+    .nav a:hover {
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    /* 히어로 섹션 */
+    .hero {
+      min-height: calc(100vh - 70px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: var(--spacing-lg) var(--spacing-md);
+      background-color: var(--color-white);
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    .hero-tag {
+      background-color: #111111;
+      color: #ffffff;
+      font-size: 13px;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      display: inline-block;
+    }
+
+    .hero-title {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 16px 0 16px 0;
+      line-height: 1.4;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--color-gray);
+      margin: 0 0 40px 0;
+      line-height: 1.5;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.8;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background-color: var(--color-white);
+      color: var(--color-primary);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--color-primary);
+      cursor: pointer;
+      transition: 0.2s;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--color-light);
+    }
+
+    /* About 섹션 */
+    .about {
+      background-color: #f8f8f8;
+      padding: 80px 48px;
+    }
+
+    .about-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .about-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-align: center;
+      margin: 0;
+    }
+
+    .about-body {
+      display: flex;
+      gap: 64px;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .about-text {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--color-gray);
+      line-height: 1.8;
+      text-align: left;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      flex: 1;
+    }
+
+    .about-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-start;
+      flex: 1;
+    }
+
+    .skill-tag {
+      background-color: #ffffff;
+      color: #333333;
+      border: 1px solid #cccccc;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 18px;
+      border-radius: 999px;
+    }
+
+    /* 작업물 섹션 */
+    .works {
+      padding: 80px var(--spacing-md);
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-align: center;
+      margin: 0 0 8px 0;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--color-gray);
+      text-align: center;
+      margin: 0 0 48px 0;
+    }
+
+    /* 카드 리스트 */
+    .card-list {
+      display: flex;
+      flex-direction: row;
+      gap: var(--spacing-md);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* 카드 */
+    .card {
+      background-color: var(--color-white);
+      border-radius: var(--radius-md);
+      border: 2px solid transparent;
+      width: 320px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .card:hover {
+      border-color: #333333;
+    }
+
+    .image-area {
+      background-color: var(--color-light);
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .image-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .content {
+      padding: var(--spacing-md) 20px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+
+    .tag {
+      background-color: var(--color-light);
+      color: var(--color-gray);
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 0;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--color-gray);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .btn-card {
+      display: block;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      margin-top: var(--spacing-sm);
+      transition: 0.3s;
+      text-decoration: none;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .btn-card.disabled {
+      background-color: #eeeeee;
+      color: #cccccc;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .btn-card.disabled:hover {
+      opacity: 1;
+    }
+
+    .btn-card:hover {
+      opacity: 0.8;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    /* 플로팅 TOP 버튼 */
+    .btn-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      background-color: #111111;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+      z-index: 999;
+    }
+
+    .btn-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .btn-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 푸터 */
+    .footer {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      text-align: center;
+      padding: 32px var(--spacing-md);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* 태블릿 */
+    @media (max-width: 768px) {
+      .header { padding: 20px var(--spacing-md); }
+      .hero-title { font-size: 32px; }
+      .card { width: 45%; }
+    }
+
+    /* 소형 태블릿 / 넓은 모바일: About 세로 배치 + 카드 1열 */
+    @media (max-width: 640px) {
+      .about-body {
+        flex-direction: column;
+        gap: 24px;
+      }
+      .card-list {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card { width: 100%; }
+    }
+
+    /* 모바일 */
+    @media (max-width: 480px) {
+      .header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px;
+      }
+      .hero-title { font-size: 28px; }
+      .hero-subtitle { font-size: 18px; }
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      .btn-primary,
+      .btn-secondary { width: 100%; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header class="header">
+    <h1 class="logo"><a href="#top" style="text-decoration:none;color:inherit;">이예진</a></h1>
+    <nav class="nav">
+      <a href="#works">작업물</a>
+      <a href="#contact">연락하기</a>
+    </nav>
+  </header>
+
+  <!-- 히어로 섹션 -->
+  <section class="hero">
+    <span class="hero-tag">UXUI Designer</span>
+    <h1 class="hero-title">사용자 공감을 바탕으로,<br>문제를 구조화하는 디자이너</h1>
+    <p class="hero-subtitle">
+      리서치와 시각화, 협업을 통해 <br>
+      서비스의 흐름과 경험을 설계합니다
+    </p>
+    <div class="hero-buttons">
+      <a class="btn-primary" href="https://www.behance.net/722f982c" target="_blank" rel="noopener noreferrer">작업물 보기</a>
+      <a class="btn-secondary" href="#contact">연락하기</a>
+    </div>
+  </section>
+
+  <!-- About 섹션 -->
+  <section class="about" id="about">
+    <div class="about-inner">
+    <h2 class="about-title">About Me</h2>
+    <div class="about-body">
+      <p class="about-text">
+        사용자 공감을 바탕으로 문제를 구조화하는 UXUI 디자이너 이예진입니다.
+        리서치와 시각화, 협업을 통해 서비스의 흐름과 경험을 설계합니다.
+      </p>
+      <div class="about-skills">
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">UX Research</span>
+        <span class="skill-tag">IA Structure</span>
+        <span class="skill-tag">Wireframing</span>
+        <span class="skill-tag">User Interview</span>
+        <span class="skill-tag">Prototyping</span>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- 작업물 섹션 -->
+  <section class="works" id="works">
+    <h2 class="section-title">Project</h2>
+    <p class="section-subtitle">지금까지 진행한 프로젝트예요</p>
+
+    <div class="card-list">
+
+      <div class="card">
+        <div class="image-area">
+          <img src="images/project1.png" alt="숨비소리" />
+        </div>
+        <div class="content">
+          <div class="card-tags">
+            <span class="tag">UXUI Design</span>
+            <span class="tag">Mobile App</span>
+          </div>
+          <h2 class="card-title">숨비소리</h2>
+          <p class="card-desc">해녀 체험의 접근성과 지속 참여 경험을 설계한 서비스</p>
+          <a class="btn-card" href="https://www.behance.net/gallery/221558939/Sumbisori-Project" target="_blank" rel="noopener noreferrer">보러가기</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image-area">
+          <img src="images/project2.png" alt="ZOOP" />
+        </div>
+        <div class="content">
+          <div class="card-tags">
+            <span class="tag">UXUI Design Lead</span>
+            <span class="tag">Mobile Web</span>
+          </div>
+          <h2 class="card-title">ZOOP</h2>
+          <p class="card-desc">AI 기반 부동산 매물 탐색 흐름을 설계한 기업연계 프로젝트</p>
+          <a class="btn-card disabled" aria-disabled="true" tabindex="-1">준비중</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image-area">
+          <img src="images/project3.png" alt="olllim" />
+        </div>
+        <div class="content">
+          <div class="card-tags">
+            <span class="tag">UXUI Design</span>
+            <span class="tag">Mobile Web</span>
+          </div>
+          <h2 class="card-title">olllim</h2>
+          <p class="card-desc">목소리와 폰트를 연결해 감정 전달 방식을 확장한 보이스 레터링 서비스</p>
+          <a class="btn-card disabled" aria-disabled="true" tabindex="-1">준비중</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="footer" id="contact">
+    <p>이예진 · UXUI Designer</p>
+    <p>re.yeahjin@gmail.com</p>
+  </footer>
+
+  <!-- 플로팅 TOP 버튼 -->
+  <button class="btn-top" id="btnTop" aria-label="맨 위로">TOP</button>
+
+  <script>
+    const btnTop = document.getElementById('btnTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        btnTop.classList.add('visible');
+      } else {
+        btnTop.classList.remove('visible');
+      }
+    });
+    btnTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
